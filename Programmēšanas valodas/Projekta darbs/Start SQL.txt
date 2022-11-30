@@ -1,0 +1,13 @@
+CREATE USER 'MariaDBUser'@'127.0.0.1' IDENTIFIED BY 'Passw0rd!';
+CREATE DATABASE 'performanceStatisticsDT'
+GRANT ALL PRIVILEGES ON *.* TO 'MariaDBUser'@'127.0.0.1';
+FLUSH PRIVILEGES;
+USE performanceStatisticsDT;
+
+CREATE TABLE runtimeLog (
+runtimeID int NOT NULL AUTO_INCREMENT,
+runtimeElement varchar(60),
+runtimeType varchar(60), 
+runtimeResult smallint,
+PRIMARY KEY (runtimeID)
+);}
