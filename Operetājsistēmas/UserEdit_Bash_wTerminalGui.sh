@@ -1,15 +1,13 @@
 #!bin/bash
 
-
-
 create_usr() {
-    username=$(whiptail --inputbox "Ievadi lietotājvārdu" 8 39-title "Jauns lietotājs" 3>&1 1>&2 2>&3)
+    username=$(whiptail --inputbox "Ievadi lietotājvārdu" 8 39 --title "Jauns lietotājs" 3>&1 1>&2 2>&3)
     sudo useradd $username
-    newpass+$(whiptail --passwordbox "Ievadi paroli" 8 78 title "Jaunā parole" 3>&1 1>&2 2>&3)
+    newpass+$(whiptail --passwordbox "Ievadi paroli" 8 78 --title "Jaunā parole" 3>&1 1>&2 2>&3)
     sudo chpasswd <<<"$username: $newpass"
 }
 delete_usr() {
-    username=$(whiptail --inputbox "Ievadi lietotājvārdu, kuru izdzēst" 8 39-title "Lietotājvārdu" 3>&1 1>&2 2>&3)
+    username=$(whiptail --inputbox "Ievadi lietotājvārdu, kuru izdzēst" 8 39 --title "Lietotājvārdu" 3>&1 1>&2 2>&3)
     subchotce=$(whiptail --title "Izvēlne" --radiolist \
     "Izvēlies vienu" 20 78 4 \
     "1" "Dzēst visus lietotaja datus" ON \
@@ -27,13 +25,13 @@ case $subchoice in
 esac
         }
 change_usr() {
-    user=$(whiptail --inputbox "Ievadi lietotāju, kuram mainit paroli" 8 39-title "" 3>&1 1>&2 2>&3)
+    user=$(whiptail --inputbox "Ievadi lietotāju, kuram mainit paroli" 8 39 --title "" 3>&1 1>&2 2>&3)
     newpass=$(whiptail --passwordbox "Ievadi paroli" 8 78 --title "Paroles dialogs" 3>&1 1>&2 2>&3)
 }
-while [1]
+while command
 do
 CHOICE=$(
-whiptail-title "Lietotāja apstrāde" --menu "Izvēlne" 16 100 9 \
+whiptail --title "Lietotāja apstrāde" --menu "Izvēlne" 16 100 9 \
     "1)" "Izveidot jaunu lietotāju" \
     "2)" "Dzēst lietotāju" \
     "3)" "Mainit paroli" \
