@@ -8,7 +8,7 @@ create_usr() {
 }
 delete_usr() {
     username=$(whiptail --inputbox "Ievadi lietotājvārdu, kuru izdzēst" 8 39 --title "Lietotājvārdu" 3>&1 1>&2 2>&3)
-    subchotce=$(whiptail --title "Izvēlne" --radiolist \
+    subchoice=$(whiptail --title "Izvēlne" --radiolist \
     "Izvēlies vienu" 20 78 4 \
     "1" "Dzēst visus lietotaja datus" ON \
     "2" "Dzēst lietotāju, bet saglabāt datus" OFF \
